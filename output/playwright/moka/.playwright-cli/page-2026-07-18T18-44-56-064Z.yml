@@ -1,0 +1,249 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "MOKA — на головну" [ref=e4] [cursor=pointer]:
+        - /url: "#home"
+        - text: MOKA
+      - navigation "Головна навігація" [ref=e5]:
+        - link "Головна" [ref=e6] [cursor=pointer]:
+          - /url: "#home"
+        - link "Меню" [ref=e7] [cursor=pointer]:
+          - /url: "#menu"
+        - link "Про нас" [ref=e8] [cursor=pointer]:
+          - /url: "#about"
+        - link "Послуги" [ref=e9] [cursor=pointer]:
+          - /url: "#services"
+        - link "Бронювання" [ref=e10] [cursor=pointer]:
+          - /url: "#booking"
+      - generic [ref=e11]:
+        - link "Контакти +38 (067) 123 45 67" [ref=e12] [cursor=pointer]:
+          - /url: tel:+380671234567
+        - link "Забронювати" [ref=e13] [cursor=pointer]:
+          - /url: "#booking"
+  - main [ref=e14]:
+    - region [ref=e15]:
+      - generic [ref=e19]:
+        - paragraph [ref=e20]: БІЛЬШЕ, НІЖ КАВА
+        - heading "Більше, ніж місце для ранкової кави." [level=1] [ref=e21]
+        - paragraph [ref=e22]: MOKA — це простір для неспішних ранків, теплих зустрічей та щирих розмов. Кава, яку хочеться смакувати. Їжа, що надихає.
+        - generic [ref=e23]:
+          - link "Переглянути меню" [ref=e24] [cursor=pointer]:
+            - /url: "#menu"
+          - link "Забронювати столик" [ref=e25] [cursor=pointer]:
+            - /url: "#booking"
+    - region "Інформація про кафе" [ref=e27]:
+      - generic [ref=e28]:
+        - generic [ref=e34]:
+          - heading "Години роботи" [level=2] [ref=e35]
+          - paragraph [ref=e36]: Щодня 07:30 – 22:00
+        - generic [ref=e42]:
+          - heading "Наша адреса" [level=2] [ref=e43]
+          - paragraph [ref=e44]: вул. Велика Васильківська, 20 Київ, Україна
+        - generic [ref=e49]:
+          - heading "Рейтинг гостей" [level=2] [ref=e50]
+          - generic [ref=e51]:
+            - paragraph [ref=e52]: 4.9 з 5 на Google
+            - generic "Рейтинг 4.9 з 5" [ref=e53]
+    - region [ref=e65]:
+      - generic [ref=e66]:
+        - generic [ref=e67]:
+          - generic [ref=e68]:
+            - paragraph [ref=e69]: МЕНЮ
+            - heading "Наше меню" [level=2] [ref=e70]
+          - link "Переглянути повне меню" [ref=e71] [cursor=pointer]:
+            - /url: "#menu-grid"
+        - tablist "Категорії меню" [ref=e74]:
+          - tab "Сніданки" [selected] [ref=e75] [cursor=pointer]
+          - tab "Випічка" [ref=e76] [cursor=pointer]
+          - tab "Основне" [ref=e77] [cursor=pointer]
+          - tab "Десерти" [ref=e78] [cursor=pointer]
+          - tab "Кава та напої" [ref=e79] [cursor=pointer]
+      - generic [ref=e80]:
+        - article [ref=e81]:
+          - img "Авокадо тост з яйцем пашот" [ref=e83]
+          - generic [ref=e84]:
+            - generic [ref=e85]:
+              - heading "Авокадо тост з яйцем пашот" [level=3] [ref=e86]
+              - paragraph [ref=e87]: З пшеничним хлібом, авокадо, руколою та насінням
+            - strong [ref=e88]: 210 ₴
+        - article [ref=e89]:
+          - img "Класичний круасан на керамічній тарілці" [ref=e91]
+          - generic [ref=e92]:
+            - generic [ref=e93]:
+              - heading "Круасан класичний" [level=3] [ref=e94]
+              - paragraph [ref=e95]: Хрумкий зовні, ніжний всередині. Подаємо з маслом та джемом
+            - strong [ref=e96]: 95 ₴
+        - article [ref=e97]:
+          - img "Вівсяна каша зі свіжими ягодами" [ref=e99]
+          - generic [ref=e100]:
+            - generic [ref=e101]:
+              - heading "Вівсяна каша з ягодами" [level=3] [ref=e102]
+              - paragraph [ref=e103]: На кокосовому молоці з сезонними ягодами та медом
+            - strong [ref=e104]: 180 ₴
+        - article [ref=e105]:
+          - img "Чізкейк Сан-Себастьян з ягідним соусом" [ref=e107]
+          - generic [ref=e108]:
+            - generic [ref=e109]:
+              - heading "Чізкейк Сан-Себастьян" [level=3] [ref=e110]
+              - paragraph [ref=e111]: Ніжний баскський чізкейк з ягідним соусом
+            - strong [ref=e112]: 165 ₴
+        - article [ref=e113]:
+          - img "Капучино з лате-артом" [ref=e115]
+          - generic [ref=e116]:
+            - generic [ref=e117]:
+              - heading "Капучино" [level=3] [ref=e118]
+              - paragraph [ref=e119]: На еспресо та молоці вищого ґатунку
+            - strong [ref=e120]: 85 ₴
+      - article [ref=e121]:
+        - generic "Пропозиція діє лише до 31 травня" [ref=e122]:
+          - generic [ref=e123]: лише
+          - strong [ref=e124]: до 31.05
+        - generic [ref=e125]:
+          - paragraph [ref=e126]: СЕЗОННА ПРОПОЗИЦІЯ
+          - heading "Полуничний лате" [level=2] [ref=e127]
+          - paragraph [ref=e128]: Ніжний смак полуниці, еспресо та вершків у гармонійному поєднанні.
+          - link "Спробувати новинку" [ref=e129] [cursor=pointer]:
+            - /url: "#menu"
+        - img "Полуничний лате з еспресо та вершками" [ref=e131]
+    - region [ref=e133]:
+      - heading "Формати для ваших особливих моментів" [level=2] [ref=e134]
+      - generic [ref=e135]:
+        - article [ref=e136]:
+          - img "Тарілка зі сніданком та яйцями" [ref=e138]
+          - generic [ref=e139]:
+            - heading "Сніданки цілий день" [level=3] [ref=e146]
+            - paragraph [ref=e147]: Улюблені сніданки доступні протягом усього дня.
+            - link "Детальніше" [ref=e148] [cursor=pointer]:
+              - /url: "#booking"
+        - article [ref=e151]:
+          - img "Сервірований стіл для кейтерингу" [ref=e153]
+          - generic [ref=e154]:
+            - heading "Кейтеринг" [level=3] [ref=e159]
+            - paragraph [ref=e160]: Смачні рішення для ваших подій будь-якого масштабу.
+            - link "Детальніше" [ref=e161] [cursor=pointer]:
+              - /url: "#booking"
+        - article [ref=e164]:
+          - img "Інтер’єр кафе для приватної події" [ref=e166]
+          - generic [ref=e167]:
+            - heading "Приватні події" [level=3] [ref=e173]
+            - paragraph [ref=e174]: Затишний простір для свят, зустрічей та закритих заходів.
+            - link "Детальніше" [ref=e175] [cursor=pointer]:
+              - /url: "#booking"
+        - article [ref=e178]:
+          - img "Кава з собою та свіжий круасан" [ref=e180]
+          - generic [ref=e181]:
+            - heading "Кава та випічка з собою" [level=3] [ref=e185]
+            - paragraph [ref=e186]: Свіжа кава та випічка, щоб ваш день був ідеальним.
+            - link "Детальніше" [ref=e187] [cursor=pointer]:
+              - /url: "#booking"
+    - generic [ref=e191]:
+      - region [ref=e192]:
+        - img "Теплий інтер’єр міського кафе MOKA" [ref=e194]
+        - generic [ref=e195]:
+          - paragraph [ref=e196]: ПРО НАС
+          - heading "Історія про любов до деталей та справжнього смаку." [level=2] [ref=e197]
+          - generic [ref=e198]:
+            - generic [ref=e199]:
+              - paragraph [ref=e200]: MOKA — це міський кафе простір, створений для тих, хто цінує якість, атмосферу та щирість у кожній деталі. Ми працюємо з локальними фермерами, обсмажуємо каву на власному обладнанні та готуємо з любов'ю щодня.
+              - link "Більше про нас" [ref=e201] [cursor=pointer]:
+                - /url: "#services"
+            - generic [ref=e204]:
+              - generic [ref=e205]:
+                - term [ref=e206]:
+                  - generic [ref=e209]: 5+
+                - definition [ref=e210]: років створюємо смачні моменти
+              - generic [ref=e211]:
+                - term [ref=e212]:
+                  - generic [ref=e217]: 12 000+
+                - definition [ref=e218]: щасливих гостей щомісяця
+              - generic [ref=e219]:
+                - term [ref=e220]:
+                  - generic [ref=e224]: 100%
+                - definition [ref=e225]: натуральні інгредієнти преміум якості
+      - region [ref=e226]:
+        - heading "ЩО КАЖУТЬ НАШІ ГОСТІ" [level=2] [ref=e227]
+        - generic [ref=e228]:
+          - article [ref=e229]:
+            - paragraph [ref=e234]: Найкращий капучино в місті та неймовірні сніданки! Атмосфера, в яку хочеться повертатися знову і знову.
+            - generic [ref=e235]:
+              - img "Фото гостя Анна К." [ref=e236]
+              - strong [ref=e238]: Анна К.
+          - article [ref=e239]:
+            - paragraph [ref=e244]: Ідеальне місце для зустрічей і роботи. Все продумано до дрібниць, від сервісу до смаку кожної страви.
+            - generic [ref=e245]:
+              - img "Фото гостя Олексій І." [ref=e246]
+              - strong [ref=e248]: Олексій І.
+          - article [ref=e249]:
+            - paragraph [ref=e254]: Проводили тут день народження — усе було чудово! Смачно, красиво і дуже затишно.
+            - generic [ref=e255]:
+              - img "Фото гостя Марія П." [ref=e256]
+              - strong [ref=e258]: Марія П.
+        - generic "Навігація відгуками" [ref=e259]:
+          - button "Показати відгук 1" [ref=e260] [cursor=pointer]
+          - button "Показати відгук 2" [ref=e261] [cursor=pointer]
+          - button "Показати відгук 3" [ref=e262] [cursor=pointer]
+          - button "Показати відгук 4" [ref=e263] [cursor=pointer]
+    - region [ref=e265]:
+      - img "Затишний інтер’єр кафе MOKA ввечері" [ref=e266]
+      - generic [ref=e268]:
+        - heading "Ваш улюблений столик вже чекає" [level=2] [ref=e272]
+        - paragraph [ref=e273]: Забронюйте столик онлайн за кілька кліків та насолоджуйтеся моментом у MOKA.
+        - link "Забронювати столик" [ref=e274] [cursor=pointer]:
+          - /url: tel:+380971234567
+  - contentinfo [ref=e275]:
+    - generic [ref=e276]:
+      - generic [ref=e277]:
+        - generic [ref=e278]:
+          - link "MOKA — на головну" [ref=e279] [cursor=pointer]:
+            - /url: "#home"
+            - text: MOKA
+          - paragraph [ref=e280]: Кава • Їжа • Люди
+          - paragraph [ref=e281]: Затишне міське кафе, де кожен момент стає особливим.
+          - generic [ref=e282]:
+            - link "Instagram" [ref=e283] [cursor=pointer]:
+              - /url: "#"
+            - link "Facebook" [ref=e287] [cursor=pointer]:
+              - /url: "#"
+            - link "Telegram" [ref=e290] [cursor=pointer]:
+              - /url: "#"
+            - link "YouTube" [ref=e294] [cursor=pointer]:
+              - /url: "#"
+        - generic [ref=e297]:
+          - heading "Навігація" [level=2] [ref=e298]
+          - list [ref=e299]:
+            - listitem [ref=e300]:
+              - link "Меню" [ref=e301] [cursor=pointer]:
+                - /url: "#menu"
+            - listitem [ref=e302]:
+              - link "Про нас" [ref=e303] [cursor=pointer]:
+                - /url: "#about"
+            - listitem [ref=e304]:
+              - link "Послуги" [ref=e305] [cursor=pointer]:
+                - /url: "#services"
+            - listitem [ref=e306]:
+              - link "Бронювання" [ref=e307] [cursor=pointer]:
+                - /url: "#booking"
+            - listitem [ref=e308]:
+              - link "Контакти" [ref=e309] [cursor=pointer]:
+                - /url: "#contacts"
+        - generic [ref=e310]:
+          - heading "Контакти" [level=2] [ref=e311]
+          - list [ref=e312]:
+            - listitem [ref=e313]:
+              - link "+38 (097) 123 45 67" [ref=e316] [cursor=pointer]:
+                - /url: tel:+380971234567
+            - listitem [ref=e317]:
+              - link "hello@moka.cafe" [ref=e321] [cursor=pointer]:
+                - /url: mailto:hello@moka.cafe
+            - listitem [ref=e322]:
+              - generic [ref=e326]: вул. Велика Васильківська, 23Київ, Україна
+        - generic [ref=e327]:
+          - generic [ref=e328]:
+            - heading "Години роботи" [level=2] [ref=e329]
+            - paragraph [ref=e330]: Щодня08:00 – 22:00
+          - img "Інтер’єр кафе MOKA" [ref=e332]
+      - generic [ref=e333]:
+        - paragraph [ref=e334]: © 2026 MOKA. Усі права захищені.
+        - link "Політика конфіденційності" [ref=e335] [cursor=pointer]:
+          - /url: "#"
+  - button "Open Next.js Dev Tools" [ref=e341] [cursor=pointer]

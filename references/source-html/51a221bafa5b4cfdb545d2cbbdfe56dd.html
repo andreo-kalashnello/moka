@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="uk" style=""><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MOKA — Responsive Landing Page</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,600;0,700;1,600&amp;family=Inter:wght@400;500;600&amp;family=Manrope:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "surface-dim": "#1a110d",
+                "surface-bright": "#423732",
+                "on-tertiary-fixed-variant": "#56433a",
+                "on-primary-fixed": "#1f1c00",
+                "on-error": "#690005",
+                "on-secondary": "#31312b",
+                "primary-fixed": "#ece4ad",
+                "tertiary": "#dcc1b6",
+                "on-primary": "#35310a",
+                "secondary-fixed": "#e6e2d9",
+                "error": "#ffb4ab",
+                "surface-container": "#271d19",
+                "surface-container-highest": "#3e322d",
+                "surface-tint": "#cfc893",
+                "on-error-container": "#ffdad6",
+                "on-secondary-container": "#bbb8b0",
+                "inverse-surface": "#f2dfd7",
+                "inverse-primary": "#646034",
+                "error-container": "#93000a",
+                "surface-variant": "#3e322d",
+                "surface-container-lowest": "#150c08",
+                "secondary": "#c9c6be",
+                "on-primary-container": "#f7f0b8",
+                "background": "#1a110d",
+                "tertiary-fixed-dim": "#dcc1b6",
+                "primary-container": "#726d40",
+                "secondary-container": "#4a4943",
+                "outline": "#949183",
+                "on-tertiary-fixed": "#271811",
+                "surface": "#1a110d",
+                "on-background": "#f2dfd7",
+                "surface-container-low": "#231915",
+                "on-surface": "#f2dfd7",
+                "secondary-fixed-dim": "#c9c6be",
+                "outline-variant": "#49473c",
+                "surface-container-high": "#322823",
+                "tertiary-container": "#7d675e",
+                "on-secondary-fixed-variant": "#484741",
+                "on-tertiary": "#3e2d25",
+                "primary-fixed-dim": "#cfc893",
+                "on-secondary-fixed": "#1c1c17",
+                "on-primary-fixed-variant": "#4c481f",
+                "primary": "#cfc893",
+                "on-tertiary-container": "#ffeae1",
+                "inverse-on-surface": "#392e29",
+                "on-surface-variant": "#cbc6b8",
+                "tertiary-fixed": "#f9ddd1",
+                
+                "surface-light": "#FDF9F5",
+                "text-dark": "#291e19",
+                "text-muted": "#5c483d",
+                "accent-brown": "#7b533e",
+                "card-bg": "#fcf9f6",
+                "card-border": "#eaddd5",
+
+                "warm-white": "#F8F5EF",
+                "border-beige": "#E6DFD3",
+
+                "moka-dark": "#2B231E",
+                "moka-dark-lighter": "#3D322B",
+                "moka-accent": "#6C6E4A",
+                "moka-accent-hover": "#5A5B3D",
+                "moka-bg": "#F4F2EC",
+                "moka-text": "#333333",
+                "moka-text-light": "#666666",
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px",
+                "card": "1rem"
+        },
+        "spacing": {
+                "unit": "8px",
+                "container-max": "1312px",
+                "margin-mobile": "20px",
+                "margin-desktop": "64px",
+                "gutter": "24px"
+        },
+        "fontFamily": {
+                "headline-md": [
+                        "Playfair Display"
+                ],
+                "headline-lg": [
+                        "Playfair Display"
+                ],
+                "label-sm": [
+                        "Montserrat"
+                ],
+                "body-lg": [
+                        "Montserrat"
+                ],
+                "label-lg": [
+                        "Montserrat"
+                ],
+                "headline-xl": [
+                        "Playfair Display"
+                ],
+                "headline-lg-mobile": [
+                        "Playfair Display"
+                ],
+                "body-md": [
+                        "Montserrat"
+                ],
+                "serif": ["Playfair Display", "serif"],
+                "sans": ["Montserrat", "sans-serif"]
+        },
+        "fontSize": {
+                "headline-md": [
+                        "32px",
+                        {
+                                "lineHeight": "1.3",
+                                "fontWeight": "600"
+                        }
+                ],
+                "headline-lg": [
+                        "48px",
+                        {
+                                "lineHeight": "1.2",
+                                "fontWeight": "600"
+                        }
+                ],
+                "label-sm": [
+                        "12px",
+                        {
+                                "lineHeight": "1.2",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "500"
+                        }
+                ],
+                "body-lg": [
+                        "18px",
+                        {
+                                "lineHeight": "1.6",
+                                "fontWeight": "400"
+                        }
+                ],
+                "label-lg": [
+                        "14px",
+                        {
+                                "lineHeight": "1.2",
+                                "letterSpacing": "0.1em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "headline-xl": [
+                        "82px",
+                        {
+                                "lineHeight": "0.95",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "headline-lg-mobile": [
+                        "36px",
+                        {
+                                "lineHeight": "1.2",
+                                "fontWeight": "600"
+                        }
+                ],
+                "body-md": [
+                        "16px",
+                        {
+                                "lineHeight": "1.6",
+                                "fontWeight": "400"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        [data-weight="fill"] > .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(90deg, rgba(21, 12, 8, 0.95) 0%, rgba(21, 12, 8, 0.6) 35%, rgba(21, 12, 8, 0) 100%);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-gradient {
+                background: linear-gradient(0deg, rgba(21, 12, 8, 0.95) 0%, rgba(21, 12, 8, 0.4) 100%);
+            }
+        }
+
+        .card-gradient {
+          background: linear-gradient(to right, #FBF8F2 0%, #FBF8F2 45%, rgba(251, 248, 242, 0) 100%);
+        }
+        
+        @media (max-width: 1024px) {
+            .card-gradient {
+                background: linear-gradient(to right, #FBF8F2 0%, #FBF8F2 60%, rgba(251, 248, 242, 0) 100%);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .card-gradient {
+                background: linear-gradient(to top, #FBF8F2 0%, #FBF8F2 60%, rgba(251, 248, 242, 0) 100%);
+            }
+        }
+
+        .icon-svg {
+          width: 48px;
+          height: 48px;
+          stroke: #8B5A2B;
+          stroke-width: 1.5;
+          fill: none;
+          margin-bottom: 24px;
+        }
+
+        .bg-pattern {
+          background-image: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 40%),
+                            radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+                            radial-gradient(circle at 50% -20%, rgba(255, 255, 255, 0.05) 0%, transparent 60%);
+        }
+        
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-surface-light text-text-dark min-h-screen antialiased overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container pb-20 md:pb-0">
+<!-- TopAppBar Mobile -->
+<header class="fixed top-0 w-full z-50 bg-surface-light/90 backdrop-blur-xl border-b border-card-border flex justify-between items-center px-margin-mobile h-16 md:hidden">
+<button class="text-text-dark hover:opacity-80 transition-opacity flex items-center justify-center w-10 h-10">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<a class="font-headline-md text-2xl tracking-widest text-text-dark uppercase" href="#">MOKA</a>
+<div class="w-10 h-10 rounded-full bg-white overflow-hidden flex items-center justify-center text-text-dark border border-card-border">
+<span class="material-symbols-outlined">person</span>
+</div>
+</header>
+<!-- Header Desktop & Tablet -->
+<header class="hidden md:flex h-[88px] items-center w-full z-50 bg-transparent absolute top-0">
+<div class="flex justify-between items-center w-full px-8 lg:px-margin-desktop max-w-container-max mx-auto">
+<!-- Brand Logo -->
+<a class="font-headline-md text-[28px] text-on-surface uppercase tracking-widest" href="#">
+                MOKA
+            </a>
+<!-- Navigation Links Tablet/Desktop -->
+<nav class="flex items-center space-x-6 lg:space-x-8">
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-lg text-label-lg" href="#">Головна</a>
+<a class="text-on-surface hover:text-primary transition-colors font-label-lg text-label-lg" href="#">Меню</a>
+<a class="text-on-surface hover:text-primary transition-colors font-label-lg text-label-lg" href="#">Про нас</a>
+<a class="text-on-surface hover:text-primary transition-colors font-label-lg text-label-lg hidden lg:block" href="#">Послуги</a>
+<a class="text-on-surface hover:text-primary transition-colors font-label-lg text-label-lg hidden lg:block" href="#">Бронювання</a>
+</nav>
+<!-- Actions -->
+<div class="flex items-center space-x-4 lg:space-x-8">
+<a class="hidden lg:block font-label-lg text-label-lg text-on-surface hover:text-primary transition-colors whitespace-nowrap" href="tel:+380671234567">
+                    Контакти +38 (067) 123 45 67
+                </a>
+<button class="bg-[#726d40] text-on-primary-container px-4 lg:px-6 h-[40px] lg:h-[48px] rounded-lg font-label-lg text-sm lg:text-label-lg hover:opacity-90 transition-all whitespace-nowrap">Забронювати</button>
+</div>
+</div>
+</header>
+<section class="relative h-[85vh] md:h-[600px] lg:h-[720px] w-full flex items-center justify-start overflow-hidden bg-cover bg-[center] md:bg-[68%_center] mt-16 md:mt-0" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA6ipP8c_ldDFp7rEc_U1DyCsXsh-vSxeL7Vsv5mlu352eVym_QieMfSSLgmeTlslFVPZ-88i5OP2-T8G8RbpdEtcR6IEaOghIDDOzOdAFvoWFad_t0CJD1VpTQEKW-E7BEpm_-JjAet-olIOzsEdA5USrodnt30tjt3AnP5qgpdIpedOFNEQZwv7QVBjB1Zmx2ZmhEcKXLsdA3qx5MmvJ8qhRYDmqd0jf7PGvtS-Zd94a-6qFh3kZ0TJrGUGua8top3w");'>
+<!-- Dark Gradient Overlay -->
+<div class="absolute inset-0 hero-gradient"></div>
+<!-- Hero Content -->
+<div class="relative z-10 w-full max-w-container-max mx-auto px-margin-mobile md:px-8 lg:px-margin-desktop pt-12 md:pt-24 pb-12 md:pb-24 flex flex-col justify-end md:justify-center h-full">
+<div class="max-w-[560px]">
+<p class="font-label-lg text-sm lg:text-label-lg text-primary uppercase tracking-[0.2em] mb-4">
+                    БІЛЬШЕ, НІЖ КАВА
+                </p>
+<h1 class="font-headline-lg-mobile md:font-headline-lg lg:font-headline-xl text-4xl md:text-5xl lg:text-headline-xl text-on-surface mb-6 md:mb-8 text-white">
+                    Більше, ніж<br class="hidden md:block"/> місце для<br class="hidden md:block"/> ранкової кави.
+                </h1>
+<p class="font-body-md text-base lg:text-body-md text-on-surface-variant mb-8 md:mb-12 max-w-[500px] leading-relaxed">
+                    MOKA — це простір для неспішних ранків, теплих зустрічей та щирих розмов. Кава, яку хочеться смакувати. Їжа, що надихає.
+                </p>
+<div class="flex flex-col sm:flex-row items-center gap-4">
+<button class="bg-[#726d40] text-on-primary-container w-full sm:w-auto px-8 h-[52px] rounded-lg font-label-lg text-label-lg hover:opacity-90 transition-all">
+                        Переглянути меню
+                    </button>
+<button class="border border-on-surface text-on-surface w-full sm:w-auto px-8 h-[52px] rounded-lg font-label-lg text-label-lg hover:bg-on-surface hover:text-background transition-all">
+                        Забронювати столик
+                    </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Info Strip -->
+<section class="bg-white text-surface-container py-8 md:py-0 md:h-[140px] flex items-center border-b border-card-border">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-8 lg:px-margin-desktop w-full flex flex-col md:grid md:grid-cols-3 gap-6 md:gap-0 h-full">
+<!-- Hours -->
+<div class="flex items-center md:justify-center gap-4 md:gap-6 md:border-r border-outline/20 pb-4 md:pb-0 border-b md:border-b-0">
+<div class="flex-shrink-0 w-12 h-12 rounded-full border border-primary-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined" style="font-size: 28px;">schedule</span>
+</div>
+<div>
+<h3 class="font-body-lg text-[16px] md:text-[18px] font-semibold mb-1">Години роботи</h3>
+<p class="font-body-md text-[14px] text-surface-variant">Щодня 07:30 – 22:00</p>
+</div>
+</div>
+<!-- Address -->
+<div class="flex items-center md:justify-center gap-4 md:gap-6 md:border-r border-outline/20 pb-4 md:pb-0 border-b md:border-b-0">
+<div class="flex-shrink-0 w-12 h-12 rounded-full border border-primary-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined" style="font-size: 28px;">location_on</span>
+</div>
+<div>
+<h3 class="font-body-lg text-[16px] md:text-[18px] font-semibold mb-1">Наша адреса</h3>
+<p class="font-body-md text-[14px] text-surface-variant">вул. Велика Васильківська, 20<br/>Київ, Україна</p>
+</div>
+</div>
+<!-- Rating -->
+<div class="flex items-center md:justify-center gap-4 md:gap-6">
+<div class="flex-shrink-0 w-12 h-12 rounded-full border border-primary-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined" style="font-size: 28px;">star</span>
+</div>
+<div>
+<h3 class="font-body-lg text-[16px] md:text-[18px] font-semibold mb-1">Рейтинг гостей</h3>
+<div class="flex items-center gap-2">
+<p class="font-body-md text-[14px] text-surface-variant">4.9 з 5 на Google</p>
+<div class="flex text-primary-container">
+<span class="material-symbols-outlined" style='font-size: 14px; font-variation-settings: "FILL" 1;'>star</span>
+<span class="material-symbols-outlined" style='font-size: 14px; font-variation-settings: "FILL" 1;'>star</span>
+<span class="material-symbols-outlined" style='font-size: 14px; font-variation-settings: "FILL" 1;'>star</span>
+<span class="material-symbols-outlined" style='font-size: 14px; font-variation-settings: "FILL" 1;'>star</span>
+<span class="material-symbols-outlined" style='font-size: 14px; font-variation-settings: "FILL" 0;'>star</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Block 2: Menu & Seasonal Offer (SCREEN_33) -->
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-8 lg:px-margin-desktop py-12 md:py-[80px] flex flex-col gap-8 md:gap-[64px] bg-surface-light">
+<!-- 1. Menu Heading & 2. Category Filters -->
+<div class="flex flex-col gap-6">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 md:gap-0">
+<div>
+<span class="block font-label-sm text-label-sm text-[#7d675e] uppercase tracking-[0.1em] mb-2">МЕНЮ</span>
+<h1 class="font-headline-lg-mobile text-4xl md:font-headline-lg lg:font-headline-xl lg:text-[60px] leading-[1.1] font-bold text-text-dark">Наше меню</h1>
+</div>
+<a class="font-body-md text-sm md:text-body-md hover:text-[#cfc893] transition-colors flex items-center gap-2 border-b border-transparent hover:border-[#cfc893] pb-1 text-text-dark" href="#">
+                    Переглянути повне меню
+                    <span class="material-symbols-outlined text-[20px]" data-original-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<!-- Filters -->
+<div class="flex overflow-x-auto gap-4 mt-4 pb-2 scrollbar-hide -mx-margin-mobile px-margin-mobile md:mx-0 md:px-0">
+<button class="px-6 py-2.5 rounded-full bg-primary-container text-on-primary-container font-label-lg text-sm lg:text-label-lg transition-transform hover:scale-[1.02] whitespace-nowrap">
+                    Сніданки
+                </button>
+<button class="px-6 py-2.5 rounded-full bg-transparent border border-outline-variant text-text-dark font-label-lg text-sm lg:text-label-lg hover:border-primary-container hover:text-primary transition-all whitespace-nowrap">
+                    Випічка
+                </button>
+<button class="px-6 py-2.5 rounded-full bg-transparent border border-outline-variant text-text-dark font-label-lg text-sm lg:text-label-lg hover:border-primary-container hover:text-primary transition-all whitespace-nowrap">
+                    Основне
+                </button>
+<button class="px-6 py-2.5 rounded-full bg-transparent border border-outline-variant text-text-dark font-label-lg text-sm lg:text-label-lg hover:border-primary-container hover:text-primary transition-all whitespace-nowrap">
+                    Десерти
+                </button>
+<button class="px-6 py-2.5 rounded-full bg-transparent border border-outline-variant text-text-dark font-label-lg text-sm lg:text-label-lg hover:border-primary-container hover:text-primary transition-all whitespace-nowrap">
+                    Кава та напої
+                </button>
+</div>
+</div>
+<!-- 3. Menu Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-4">
+<!-- Card 1 -->
+<div class="rounded-xl overflow-hidden flex flex-col border border-outline-variant bg-white">
+<div class="h-[200px] w-full overflow-hidden">
+<img alt="Авокадо тост з яйцем пашот" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAq2J8CVNGwRBepPLaPaSHjdcQnsMKb4EGsYBmcEFOmr2-SuArW7bZX1S7XyvYb5yRMSAgrazVsY_6fTQj5otEMciH5ecBANUd2ONsfdxhhCrK9UfeotAmEiA8NSkoSzMQxdZRaE2LufeLHKRh2b1daf4LUHOlIBVhN79xtrKyYNmkLPO469-F0INyh6-y2ZTjkq_DGCpQGj4NJALZe_MJyD6yGptAEqiLPB0kOLYreRSH26ppwN84f"/>
+</div>
+<div class="p-5 flex flex-col flex-grow justify-between gap-4">
+<div>
+<h3 class="font-label-lg text-base lg:text-label-lg font-bold mb-2 text-text-dark">Авокадо тост<br class="hidden lg:block"/> з яйцем пашот</h3>
+<p class="font-body-md text-[13px] leading-snug text-text-muted">З пшеничним хлібом, авокадо, руколою та насінням</p>
+</div>
+<div class="font-headline-md text-[20px] font-semibold text-text-dark">210 ₴</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="rounded-xl overflow-hidden flex flex-col border border-outline-variant bg-white">
+<div class="h-[200px] w-full overflow-hidden">
+<img alt="Круасан класичний" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsuSLTVbPoam9mvm2PjBwHDB-9mMCTtPUAHFCLenj-GZi5WB6nzPBGfBCi2_d8xME1MD899--SV9wskKDF9GonRYrod4pt_CwHMzzwP_0c_ij4rJHNXa2buHItx6lE6thV5wJrVhpPmvM-IhBWiPXNxd78lGYF1WxQdSPuLA-qlwrGHJlanhzRJYwG5CYUcgcXioDImjkqJfuQFKD8WKI7axnqhr8DXLF820gFKFvzASV-_kOsW64W"/>
+</div>
+<div class="p-5 flex flex-col flex-grow justify-between gap-4">
+<div>
+<h3 class="font-label-lg text-base lg:text-label-lg font-bold mb-2 text-text-dark">Круасан класичний</h3>
+<p class="font-body-md text-[13px] leading-snug text-text-muted">Хрумкий зовні, ніжний всередині. Подаємо з маслом та джемом</p>
+</div>
+<div class="font-headline-md text-[20px] font-semibold text-text-dark">95 ₴</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="rounded-xl overflow-hidden flex flex-col border border-outline-variant bg-white">
+<div class="h-[200px] w-full overflow-hidden">
+<img alt="Вівсяна каша з ягодами" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHmufu1dyBwElb_PShR3cHvVGMBb04PGfBNiegMT8tvbyscaFY-CVDt0RCJ4d9zp4b8mqJKVBFFaQSfSyvOA0XKOCqRdp7MbaK82S4jBROs9SgcFfiD_XS3TyJzCIdqAWdKT7eERjwe3a_17NXgljRLo4ImRDfYbdeKNpToOm8XudyOjO57ewdrCXgoIRnuWnCK68uKMuCexgBHcG3KIda96-7_vISS7ThEbu8yg-in6SMVSYyYk8_"/>
+</div>
+<div class="p-5 flex flex-col flex-grow justify-between gap-4">
+<div>
+<h3 class="font-label-lg text-base lg:text-label-lg font-bold mb-2 text-text-dark">Вівсяна каша<br class="hidden lg:block"/> з ягодами</h3>
+<p class="font-body-md text-[13px] leading-snug text-text-muted">На кокосовому молоці з сезонними ягодами та медом</p>
+</div>
+<div class="font-headline-md text-[20px] font-semibold text-text-dark">180 ₴</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="rounded-xl overflow-hidden flex flex-col border border-outline-variant bg-white">
+<div class="h-[200px] w-full overflow-hidden">
+<img alt="Чізкейк Сан-Себастьян" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRreiE4-wPAbrT7BsyPLg0azpXlFozpnY7sB2HnkY5gi4RCaxEo0zP9m1vkwNHoOyMxbQcWP3gxxmLU8y4REH5iJDCHYlkPQIjrzJrBbnot0CEWPV9X3h4PhgSWGcnSsutMBqWf-qfJJwSA5gi1MJ20IlKTlHn1UuGtpJncOnf1eCTSiHP4iyGxubgmrPeg3jWekmVe5BU1zc9KekyeL1mhO66RO1BFh4VNMi2K5sCMNt9LDIZZU5U"/>
+</div>
+<div class="p-5 flex flex-col flex-grow justify-between gap-4">
+<div>
+<h3 class="font-label-lg text-base lg:text-label-lg font-bold mb-2 text-text-dark">Чізкейк Сан-Себастьян</h3>
+<p class="font-body-md text-[13px] leading-snug text-text-muted">Ніжний баскський чізкейк з ягідним соусом</p>
+</div>
+<div class="font-headline-md text-[20px] font-semibold text-text-dark">165 ₴</div>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="rounded-xl overflow-hidden flex flex-col border border-outline-variant bg-white md:col-span-2 lg:col-span-1">
+<div class="h-[200px] w-full overflow-hidden">
+<img alt="Капучино" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPtsi7WT-x5bDN6exqts6JT_l4Nlq-LGGk0De9Zy2K2jKIX4hZ81ycx3Rv9XIJNw2JHXWRekB3sfgcOPd74YG6e396Ng3ybNIsGqSi6Uw5I679IdQbEZmXTA_KU7RVmGq-9BgL1aVjUUIJKaEeSq_GSvXoptXbLakpje-tDpUphxiLmJkTJcr3V9FrNxclqAAUyIqOYX0lKxjWuhn3Mh8Mk__iUxETSyFellwQjxoNcGG6vmgWyUib"/>
+</div>
+<div class="p-5 flex flex-col flex-grow justify-between gap-4">
+<div>
+<h3 class="font-label-lg text-base lg:text-label-lg font-bold mb-2 text-text-dark">Капучино</h3>
+<p class="font-body-md text-[13px] leading-snug text-text-muted">На еспресо та молоці вищого ґатунку</p>
+</div>
+<div class="font-headline-md text-[20px] font-semibold text-text-dark">85 ₴</div>
+</div>
+</div>
+</div>
+<!-- 4. Seasonal Banner -->
+<div class="rounded-[16px] overflow-hidden flex flex-col md:flex-row relative min-h-[400px] md:h-[360px]">
+<!-- Badge -->
+<div class="absolute top-4 right-4 md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 w-24 h-24 md:w-32 md:h-32 bg-[#767351] rounded-full flex flex-col items-center justify-center text-[#F2EFE9] text-center z-50 shadow-lg">
+<span class="font-label-sm text-[12px] md:text-[14px] leading-none mb-1">лише</span>
+<span class="font-headline-md text-[18px] md:text-[24px] leading-none font-bold">до 31.05</span>
+</div>
+<!-- Content Left -->
+<div class="w-full md:w-1/2 p-8 md:p-[64px] flex flex-col justify-center text-[#F2EFE9] z-10 bg-primary-container order-2 md:order-1">
+<span class="font-label-sm text-[11px] uppercase tracking-widest text-on-primary-container mb-2 md:mb-4">СЕЗОННА ПРОПОЗИЦІЯ</span>
+<h2 class="font-headline-lg-mobile md:font-headline-lg lg:text-[48px] font-bold mb-4">Полуничний лате</h2>
+<p class="font-body-md text-base md:text-lg text-on-primary-container mb-6 md:mb-8 max-w-md">Ніжний смак полуниці, еспресо та вершків у гармонійному поєднанні.</p>
+<div>
+<button class="bg-[#767351] hover:bg-inverse-primary text-white px-6 md:px-8 py-3 md:py-3.5 rounded-lg font-label-lg text-sm md:text-label-lg transition-colors w-full md:w-auto">
+                        Спробувати новинку
+                    </button>
+</div>
+</div>
+<!-- Image Right -->
+<div class="w-full md:w-1/2 relative h-[250px] md:h-auto order-1 md:order-2">
+<div class="hidden md:block absolute inset-0 bg-gradient-to-r from-primary-container to-transparent z-10 w-32"></div>
+<div class="md:hidden absolute inset-0 bg-gradient-to-t from-primary-container to-transparent z-10 h-16 bottom-0 top-auto"></div>
+<img alt="Полуничний лате" class="w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3aetMM0ELHc3cPQpRLXc56zfqil0XdDxSVSbFGkGCywltCYEh5LOFTQp0c8DlPFAxTy_2G2MVuKAglSkVYnYgRtjCLnimFmMYkCn_aw0A-mTBIKegSunr_rxQ8vxluIfOyihmWJB3Q_25r2FRkoGnf7AmLIMR57UP0ixDSzLd-0pdAaqc_BssskBm5wAXgfEGPzYDWcpvLHRzYFUCWG2u4Dx389uyv2yn0uN6XAh3eEdb1QOC2GJu"/>
+</div>
+</div>
+</section>
+<!-- Block 3: Services/Formats (SCREEN_15) -->
+<section class="w-full max-w-[1440px] mx-auto py-12 md:py-16 px-margin-mobile md:px-8 lg:px-12 flex flex-col items-center justify-center min-h-[500px] bg-warm-white text-text-dark" data-purpose="services-section">
+<!-- Section Heading -->
+<h2 class="text-accent-brown uppercase tracking-[0.15em] text-sm font-semibold mb-8 md:mb-12 text-center font-sans" data-purpose="section-heading">
+            Формати для ваших особливих моментів
+        </h2>
+<!-- Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full" data-purpose="cards-grid">
+<!-- Card 1: Breakfast -->
+<article class="relative flex flex-col md:flex-row bg-card-bg rounded-[14px] border border-border-beige overflow-hidden min-h-[340px]" data-purpose="service-card-1">
+<!-- Text Content -->
+<div class="relative md:absolute md:inset-y-0 left-0 w-full md:w-[65%] z-10 p-6 flex flex-col card-gradient order-2 md:order-1 flex-grow">
+<svg class="icon-svg hidden md:block" viewbox="0 0 24 24">
+<path d="M7 6V4C7 3.44772 7.44772 3 8 3H16C16.5523 3 17 3.44772 17 4V6M4 6H20M5 6L6.5 18.5C6.63806 19.6457 7.60835 20.5 8.76182 20.5H15.2382C16.3916 20.5 17.3619 19.6457 17.5 18.5L19 6M20 9C21.1046 9 22 9.89543 22 11C22 12.1046 21.1046 13 20 13V9Z"></path>
+</svg>
+<div class="w-12 h-12 rounded-full border border-card-border flex md:hidden items-center justify-center text-accent-brown mb-4 bg-white/50 backdrop-blur">
+<span class="material-symbols-outlined">restaurant</span>
+</div>
+<h3 class="text-xl font-bold mb-3 leading-tight font-serif text-text-dark">Сніданки цілий<br class="hidden md:block"/> день</h3>
+<p class="text-sm text-text-muted leading-relaxed mb-4 md:mb-auto md:w-[85%] font-sans">
+                        Улюблені сніданки доступні протягом усього дня.
+                    </p>
+<a class="inline-flex items-center text-accent-brown font-semibold text-sm hover:underline mt-auto md:mt-4 font-sans" href="#">
+                        Детальніше 
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</a>
+</div>
+<!-- Background Image -->
+<div class="relative md:absolute md:inset-y-0 right-0 w-full md:w-[70%] h-[200px] md:h-full order-1 md:order-2">
+<img alt="Breakfast plate with eggs" class="w-full h-full object-cover object-right" src="https://lh3.googleusercontent.com/aida/AP1WRLt-phWPclTwOvobyugBcW8IAq5OU5j4qbaEahbJq3KUzG-lCwCKldmPdwbggDzMgNdv9MYtHzrIDG28KpOLjyIVcF5ll90IK1WoZBV5_UjdfEFAm1ewTszSQSRhHGK3IYLA4r9Jq9zSqRlviLK1qvZ4udwR0Wzk_TbQFxgsjzG3pd1WCPmyiE-nIMFQclt1pWFYZdLkdS79ByaKbwUoYrC8liE-1bbH0IkJpInyPQdTWi1zS5Mqp_VxqQ"/>
+</div>
+</article>
+<!-- Card 2: Catering -->
+<article class="relative flex flex-col md:flex-row bg-card-bg rounded-[14px] border border-border-beige overflow-hidden min-h-[340px]" data-purpose="service-card-2">
+<!-- Text Content -->
+<div class="relative md:absolute md:inset-y-0 left-0 w-full md:w-[65%] z-10 p-6 flex flex-col card-gradient order-2 md:order-1 flex-grow">
+<svg class="icon-svg hidden md:block" viewbox="0 0 24 24">
+<path d="M12 4C8.68629 4 6 6.68629 6 10H18C18 6.68629 15.3137 4 12 4ZM4 12C4 11.4477 4.44772 11 5 11H19C19.5523 11 20 11.4477 20 12C20 12.5523 19.5523 13 19 13H5C4.44772 13 4 12.5523 4 12ZM4 15H20V16C20 17.6569 18.6569 19 17 19H7C5.34315 19 4 17.6569 4 16V15Z"></path>
+</svg>
+<div class="w-12 h-12 rounded-full border border-card-border flex md:hidden items-center justify-center text-accent-brown mb-4 bg-white/50 backdrop-blur">
+<span class="material-symbols-outlined">room_service</span>
+</div>
+<h3 class="text-xl font-bold mb-3 leading-tight font-serif text-text-dark">Кейтеринг</h3>
+<p class="text-sm text-text-muted leading-relaxed mb-4 md:mb-auto md:w-[90%] font-sans">
+                        Смачні рішення для ваших подій будь-якого масштабу.
+                    </p>
+<a class="inline-flex items-center text-accent-brown font-semibold text-sm hover:underline mt-auto md:mt-4 font-sans" href="#">
+                        Детальніше 
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</a>
+</div>
+<!-- Background Image -->
+<div class="relative md:absolute md:inset-y-0 right-0 w-full md:w-[70%] h-[200px] md:h-full order-1 md:order-2">
+<img alt="Catering table" class="w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida/AP1WRLt43h4x_GUG9mB9BYoWOvzk-cnUy9Cuwss_LE7vY9AIW85AWgJGqpZToxUTXO0cWPtaJFphDUUri4MOpe2a-wUkf8Re_FUbmXNqoZDmYOyCsisGIUtAvU9RO7ssiinczttlNfA6YEh41eMTjab2FVOIQNJdNKynbg5TnEXEGKLY5BsIXvoRj-IvPx-1OQmAgOcjlxwFrHPSv0kAJGS_nx81gHhwvlSltXBR_Tj8pEAuTgj1Im-RPnVKg9o"/>
+</div>
+</article>
+<!-- Card 3: Private Events -->
+<article class="relative flex flex-col md:flex-row bg-card-bg rounded-[14px] border border-border-beige overflow-hidden min-h-[340px]" data-purpose="service-card-3">
+<!-- Text Content -->
+<div class="relative md:absolute md:inset-y-0 left-0 w-full md:w-[65%] z-10 p-6 flex flex-col card-gradient order-2 md:order-1 flex-grow">
+<svg class="icon-svg hidden md:block" viewbox="0 0 24 24">
+<path d="M17 20C17 18.3431 15.6569 17 14 17H10C8.34315 17 7 18.3431 7 20M12 13C10.3431 13 9 11.6569 9 10C9 8.34315 10.3431 7 12 7C13.6569 7 15 8.34315 15 10C15 11.6569 13.6569 13 12 13ZM20 20C20 18.6738 19.1396 17.548 17.9352 17.1517M15 13C16.3431 13 17.5 11.8807 17.5 10.5C17.5 9.11929 16.3431 8 15 8M4 20C4 18.6738 4.86043 17.548 6.06484 17.1517M9 13C7.65685 13 6.5 11.8807 6.5 10.5C6.5 9.11929 7.65685 8 9 8"></path>
+</svg>
+<div class="w-12 h-12 rounded-full border border-card-border flex md:hidden items-center justify-center text-accent-brown mb-4 bg-white/50 backdrop-blur">
+<span class="material-symbols-outlined">groups</span>
+</div>
+<h3 class="text-xl font-bold mb-3 leading-tight font-serif text-text-dark">Приватні події</h3>
+<p class="text-sm text-text-muted leading-relaxed mb-4 md:mb-auto md:w-[90%] font-sans">
+                        Затишний простір для свят, зустрічей та закритих заходів.
+                    </p>
+<a class="inline-flex items-center text-accent-brown font-semibold text-sm hover:underline mt-auto md:mt-4 font-sans" href="#">
+                        Детальніше 
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</a>
+</div>
+<!-- Background Image -->
+<div class="relative md:absolute md:inset-y-0 right-0 w-full md:w-[70%] h-[200px] md:h-full order-1 md:order-2">
+<img alt="Cafe interior" class="w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida/AP1WRLvVtbrmAv74nXyjIkX8sU91PcVNGyX0-6CwF0T3vnOHCipvJURCkFXvj-p_JRw3wwObznYTGRrmfuB3MDA9TcSWHaKzJlHZM6XlRZkVnAxORNRdHR6mZFhx9uQgdVWsY3R8jR-tjeEEgoumiItdQEJK-PDQOyhMa0ME_ESps0dURHuQYlDcBty0qYEqKyWqZoqd4ztMypNRBtUj6H1_2xIrESnDUm1OZE7ACnLaW-QDBW-tcnRnKQhc0g"/>
+</div>
+</article>
+<!-- Card 4: Coffee to go -->
+<article class="relative flex flex-col md:flex-row bg-card-bg rounded-[14px] border border-border-beige overflow-hidden min-h-[340px]" data-purpose="service-card-4">
+<!-- Text Content -->
+<div class="relative md:absolute md:inset-y-0 left-0 w-full md:w-[65%] z-10 p-6 flex flex-col card-gradient order-2 md:order-1 flex-grow">
+<svg class="icon-svg hidden md:block" viewbox="0 0 24 24">
+<path d="M18.364 5.63604C19.9261 7.19814 19.9261 9.73079 18.364 11.2929L12 17.6569L5.63604 11.2929C4.07394 9.73079 4.07394 7.19814 5.63604 5.63604C7.19814 4.07394 9.73079 4.07394 11.2929 5.63604L12 6.34315L12.7071 5.63604C14.2692 4.07394 16.8019 4.07394 18.364 5.63604Z"></path>
+</svg>
+<div class="w-12 h-12 rounded-full border border-card-border flex md:hidden items-center justify-center text-accent-brown mb-4 bg-white/50 backdrop-blur">
+<span class="material-symbols-outlined">coffee_maker</span>
+</div>
+<h3 class="text-xl font-bold mb-3 leading-tight font-serif text-text-dark">Кава та випічка<br class="hidden md:block"/> з собою</h3>
+<p class="text-sm text-text-muted leading-relaxed mb-4 md:mb-auto md:w-[90%] font-sans">
+                        Свіжа кава та випічка, щоб ваш день був ідеальним.
+                    </p>
+<a class="inline-flex items-center text-accent-brown font-semibold text-sm hover:underline mt-auto md:mt-4 font-sans" href="#">
+                        Детальніше 
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</a>
+</div>
+<!-- Background Image -->
+<div class="relative md:absolute md:inset-y-0 right-0 w-full md:w-[70%] h-[200px] md:h-full order-1 md:order-2">
+<img alt="Takeaway coffee cup and croissant" class="w-full h-full object-cover object-right" src="https://lh3.googleusercontent.com/aida/AP1WRLsgFNslk51z6AuNicT_DX_68s23zp462uh20f4_fWfnZcZRh_b29rzEDR1c_m8mReCeCWckjeUCOYW6U1_lpE_JXV4UknJqmYN-tgpYVcEOkO-pHbJN3y8s2tgSMQMpF81QzekOIl-jDKCBFSFFVTeQO3uIstwVot7IZ0UAyHhLdFgzkl4akTkqlmNXunqPNtO9i0n_Betz82NcRG9qMeE3zOiRHT0i_ZZ1FY40vemeQadgkcRiKn1zKcY"/>
+</div>
+</article>
+</div>
+</section>
+<!-- Block 4: About & Reviews (SCREEN_13) -->
+<div class="bg-surface-light py-12 md:py-16 px-margin-mobile md:px-8 lg:px-24 w-full">
+<div class="max-w-[1440px] mx-auto">
+<!-- BEGIN: AboutSection -->
+<section class="flex flex-col lg:flex-row gap-8 md:gap-12 items-start mb-12 md:mb-16">
+<!-- Left: Large Image -->
+<div class="w-full lg:w-[480px] h-[200px] md:h-[260px] rounded-[14px] overflow-hidden shadow-sm flex-shrink-0">
+<img alt="Premium cafe interior" class="object-cover w-full h-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGb4rRelbqAt_Q0aUsWEN2sERg9P8doo1k1hMZ1RtFZP-vyAC6yvMSewpeX6N3jyfSWWvS1UJkzqTtN6pkseHSeyQP3DwP2uNIkHTi-MqUleVZG4X-ubc4SdVG68C6UGHR9NmSfDc8PCXpHvUZcurwVav_dDYvDfQ-pnWJzB6lidMAf6IFQQxSSRa544Ou4Fq-7scq0pAdMqKTwo6KvHFZ3B5qYhSQHJ6lvjJHgK_x6bMX3BJLvocrK_Hbi4EPVSuWHA"/>
+</div>
+<!-- Right: Content -->
+<div class="flex-grow">
+<span class="text-sm font-semibold tracking-wider uppercase text-accent-brown mb-4 block font-sans">ПРО НАС</span>
+<h2 class="font-serif text-3xl md:text-4xl leading-tight mb-6 text-text-dark max-w-2xl">
+                        Історія про любов до деталей<br class="hidden md:block"/> та справжнього смаку.
+                    </h2>
+<div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
+<div>
+<p class="text-text-dark leading-relaxed mb-4 text-sm font-sans">
+                                MOKA — це міський кафе простір, створений для тих, хто цінує якість, атмосферу та щирість у кожній деталі. Ми працюємо з локальними фермерами, обсмажуємо каву на власному обладнанні та готуємо з любов'ю щодня.
+                            </p>
+<a class="inline-flex items-center text-accent-brown font-medium hover:text-text-dark transition-colors group text-sm font-sans" href="#">
+                                Більше про нас
+                                <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</a>
+</div>
+<!-- Stats Row -->
+<div class="flex flex-row justify-between md:justify-start md:gap-8 items-start gap-2">
+<div class="flex flex-col">
+<div class="flex items-center gap-1 md:gap-2 text-accent-brown">
+<span class="material-symbols-outlined text-lg md:text-xl hidden sm:block">schedule</span>
+<span class="font-serif text-xl md:text-2xl">5+</span>
+</div>
+<p class="text-[10px] md:text-[12px] text-text-dark leading-tight mt-1 font-sans">років створюємо<br/>смачні моменти</p>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1 md:gap-2 text-accent-brown">
+<span class="material-symbols-outlined text-lg md:text-xl hidden sm:block">group</span>
+<span class="font-serif text-xl md:text-2xl">12 000+</span>
+</div>
+<p class="text-[10px] md:text-[12px] text-text-dark leading-tight mt-1 font-sans">щасливих гостей<br/>щомісяця</p>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1 md:gap-2 text-accent-brown">
+<span class="material-symbols-outlined text-lg md:text-xl hidden sm:block">verified</span>
+<span class="font-serif text-xl md:text-2xl">100%</span>
+</div>
+<p class="text-[10px] md:text-[12px] text-text-dark leading-tight mt-1 font-sans">натуральні інгредієнти<br/>преміум якості</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: AboutSection -->
+<!-- BEGIN: ReviewsSection -->
+<section class="flex flex-col items-center">
+<h3 class="text-sm font-semibold tracking-wider uppercase text-accent-brown mb-6 md:mb-8 text-center font-sans">ЩО КАЖУТЬ НАШІ ГОСТІ</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full mb-8 md:mb-10">
+<!-- Review Card 1 -->
+<div class="bg-card-bg border border-card-border rounded-card p-6 flex flex-col justify-between shadow-sm min-h-[200px]">
+<div>
+<svg class="w-8 h-8 text-[#d4c3ba] mb-4" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"></path></svg>
+<p class="text-text-dark mb-6 leading-relaxed text-sm font-sans">
+                                Найкращий капучино в місті та неймовірні сніданки! Атмосфера, в яку хочеться повертатися знову і знову.
+                            </p>
+</div>
+<div class="flex items-center gap-3">
+<img alt="Анна К." class="w-10 h-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCkYDOuAkJ-zEE-s0Gb4VF8KUAqDddZE2a-_q_JgiPMJMSmjLDaJRYRLJ1p_MGFMxiH4axg_U3x-kKsv37NoQuw8dn9jnJVAy2TLR3aqZ25E0n4ddGhmEr9JMQDsa-CyUl_vJep2hdohnveFj4hZHGYz1chzmwdYpya5QFBSO0z8_Be5qMSyGbcnkOVDSanHlWSiDW38tJN0Dd7_MUxuYJwlKXZUqKEOE5Wg2DOIcYXnzUlwLqdrMJ"/>
+<div class="flex items-center gap-2">
+<span class="w-3 h-[1px] bg-text-dark"></span>
+<span class="font-medium text-text-dark text-sm font-sans">Анна К.</span>
+</div>
+</div>
+</div>
+<!-- Review Card 2 -->
+<div class="bg-card-bg border border-card-border rounded-card p-6 flex flex-col justify-between shadow-sm min-h-[200px]">
+<div>
+<svg class="w-8 h-8 text-[#d4c3ba] mb-4" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"></path></svg>
+<p class="text-text-dark mb-6 leading-relaxed text-sm font-sans">
+                                Ідеальне місце для зустрічей і роботи. Все продумано до дрібниць, від сервісу до смаку кожної страви.
+                            </p>
+</div>
+<div class="flex items-center gap-3">
+<img alt="Олексій І." class="w-10 h-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6CgEZiNQZWCwnGOr8mMz54gAnhcMZza767Q1mRw6JMtpwOlMi-yCENnkk56dn6X2eOd7I5gVmkj0PJWKpf8X75VjDlbAkIpkm2Nx-2hUGntduZ6E2en0SVvg9mCIAap_P2p8E--WXOXeJi_QYr1MpqHvAVr0a2CJfYF-Tsyg1wkZ-Ixgqc6jbhMFhDw3fNqtYBzBvOuEuGbMtfLVll28SV_uwbEeG94rYDFFfAhauKAdz_WvO914b"/>
+<div class="flex items-center gap-2">
+<span class="w-3 h-[1px] bg-text-dark"></span>
+<span class="font-medium text-text-dark text-sm font-sans">Олексій І.</span>
+</div>
+</div>
+</div>
+<!-- Review Card 3 -->
+<div class="bg-card-bg border border-card-border rounded-card p-6 flex flex-col justify-between shadow-sm min-h-[200px]">
+<div>
+<svg class="w-8 h-8 text-[#d4c3ba] mb-4" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"></path></svg>
+<p class="text-text-dark mb-6 leading-relaxed text-sm font-sans">
+                                Проводили тут день народження — усе було чудово! Смачно, красиво і дуже затишно.
+                            </p>
+</div>
+<div class="flex items-center gap-3">
+<img alt="Марія П." class="w-10 h-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuflRMovnlfH6_LB-Z_CK1vgj9OaTPY_nLw8sGP9Xsi_ZxPCoooANbHPY5R4v4qVRt0QEBsqDj2X--vL9S-vl8unOOHWH_-eIBwHE-VS3DrSoaNGCTSe8CMZoEpGX02QlCj-LJWlmM8UuW-1hbyhHMoJXAGIItVDWelXfNQTFhRB5FN_c7258AFpsweGldhD8W0alG6a36SzC2sxKqnyYNT7yo6w2BEg4FgKWU6KTJZIBYLlw4W6e7"/>
+<div class="flex items-center gap-2">
+<span class="w-3 h-[1px] bg-text-dark"></span>
+<span class="font-medium text-text-dark text-sm font-sans">Марія П.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination Dots -->
+<div class="flex items-center gap-3">
+<button aria-label="Go to slide 1" class="w-2.5 h-2.5 rounded-full bg-accent-brown"></button>
+<button aria-label="Go to slide 2" class="w-2.5 h-2.5 rounded-full border-2 border-accent-brown bg-transparent"></button>
+<button aria-label="Go to slide 3" class="w-2.5 h-2.5 rounded-full border-2 border-accent-brown bg-transparent"></button>
+<button aria-label="Go to slide 4" class="w-2.5 h-2.5 rounded-full border-2 border-accent-brown bg-transparent"></button>
+</div>
+</section>
+<!-- END: ReviewsSection -->
+</div>
+</div>
+<!-- Block 5: CTA & Footer (SCREEN_7) -->
+<!-- BEGIN: CTA Section -->
+<section class="bg-moka-dark relative overflow-hidden px-6 py-12 md:py-16 w-full" style='background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("https://lh3.googleusercontent.com/aida/AP1WRLsKPdAME7DDkz2K0Ak_NPhkRP2NhWDz3DztnWFWDTcaB4ZfnB5GB1DeHkhgco-woT70OcE3i_8D27_t9Y4xi_A7DQyFZdoT27-YiSW0HqtqSTXxsjvAEE-NRSHZ5BmmVmHGrOjY6ZwzBZOW96Q4Bi8S1Bd-Hxi25Utm4-3Q8bAKG5jMuHndre3wbWHcEgUs1Yb1SYTjTWIBkQxvBytG5eUDVFO1TZnOdXp2RAgXZPosFHRqIYPJBZ8J-A"); background-size: cover; background-position: center center;'>
+<!-- Background Texture/Pattern -->
+<div class="absolute inset-0 bg-pattern pointer-events-none"></div>
+<!-- Decorative Organic Shapes -->
+<div class="absolute top-0 left-0 w-64 h-64 bg-moka-accent/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+<div class="absolute bottom-0 right-0 w-96 h-96 bg-moka-accent/5 rounded-full blur-3xl translate-x-1/4 translate-y-1/4 pointer-events-none"></div>
+<!-- Coffee Bean SVG Pattern Overlay -->
+<div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: url(&quot;data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 5c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z' fill='%23ffffff' fill-rule='evenodd'/%3E%3C/svg%3E&quot;); background-size: 100px 100px;"></div>
+<div class="relative max-w-4xl mx-auto text-center flex flex-col items-center justify-center z-10">
+<!-- Icon -->
+<div class="w-12 h-12 md:w-16 md:h-16 rounded-full border border-white/20 flex items-center justify-center mb-6 md:mb-8">
+<span class="material-symbols-outlined text-white text-2xl md:text-3xl">calendar_month</span>
+</div>
+<!-- Heading -->
+<h2 class="text-3xl md:text-4xl lg:text-5xl font-serif text-white mb-4 md:mb-6">Ваш улюблений столик вже чекає</h2>
+<!-- Subtext -->
+<p class="text-gray-300 text-base md:text-lg mb-8 md:mb-10 max-w-lg mx-auto font-sans">
+                Забронюйте столик онлайн за кілька кліків та насолоджуйтеся моментом у MOKA.
+            </p>
+<!-- Button -->
+<button class="bg-moka-accent hover:bg-moka-accent-hover text-white font-medium py-3 px-8 md:py-4 md:px-10 rounded-full md:rounded transition-colors duration-300 font-sans w-full md:w-auto">
+                Забронювати столик
+            </button>
+</div>
+</section>
+<!-- END: CTA Section -->
+<!-- BEGIN: Footer Section -->
+<footer class="bg-moka-bg pt-12 md:pt-16 pb-8 border-t border-gray-200 w-full hidden md:block">
+<div class="max-w-7xl mx-auto px-6 lg:px-8">
+<!-- Top Grid Area -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
+<!-- Brand Column -->
+<div class="lg:col-span-4">
+<h3 class="text-5xl font-serif text-moka-dark mb-4 tracking-wider">MOKA</h3>
+<p class="text-xs tracking-widest text-moka-text-light uppercase mb-4 font-sans">Кава • Їжа • Люди</p>
+<p class="text-moka-text-light mb-8 max-w-xs font-sans">
+                        Затишне міське кафе, де кожен момент стає особливим.
+                    </p>
+<!-- Social Icons -->
+<div class="flex space-x-4">
+<a class="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-moka-text hover:bg-white transition-colors" href="#">
+<svg class="feather feather-instagram" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><rect height="20" rx="5" ry="5" width="20" x="2" y="2"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+</a>
+<a class="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-moka-text hover:bg-white transition-colors" href="#">
+<svg class="feather feather-facebook" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+</a>
+<a class="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-moka-text hover:bg-white transition-colors" href="#">
+<svg class="feather feather-send" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><line x1="22" x2="11" y1="2" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+</a>
+<a class="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-moka-text hover:bg-white transition-colors" href="#">
+<svg class="feather feather-youtube" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+</a>
+</div>
+</div>
+<!-- Navigation Links -->
+<div class="lg:col-span-2">
+<h4 class="font-medium text-moka-dark mb-6 font-sans">Навігація</h4>
+<ul class="space-y-3 text-moka-text-light font-sans">
+<li class=""><a class="hover:text-moka-dark transition-colors" href="#">Меню</a></li>
+<li class=""><a class="hover:text-moka-dark transition-colors" href="#">Про нас</a></li>
+<li class=""><a class="hover:text-moka-dark transition-colors" href="#">Послуги</a></li>
+<li class=""><a class="hover:text-moka-dark transition-colors" href="#">Бронювання</a></li>
+<li class=""><a class="hover:text-moka-dark transition-colors" href="#">Контакти</a></li>
+</ul>
+</div>
+<!-- Contacts -->
+<div class="lg:col-span-3">
+<h4 class="font-medium text-moka-dark mb-6 font-sans">Контакти</h4>
+<ul class="space-y-4 text-moka-text-light font-sans">
+<li class="flex items-start">
+<svg class="w-5 h-5 mr-3 mt-0.5 text-moka-dark" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.896-1.596-5.273-3.973-6.869-6.869l1.293-.97c.362-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="">+38 (097) 123 45 67</span>
+</li>
+<li class="flex items-start">
+<svg class="w-5 h-5 mr-3 mt-0.5 text-moka-dark" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="">hello@moka.cafe</span>
+</li>
+<li class="flex items-start">
+<svg class="w-5 h-5 mr-3 mt-0.5 text-moka-dark" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="">вул. Велика Васильківська, 23<br/>Київ, Україна</span>
+</li>
+</ul>
+</div>
+<!-- Working Hours & Image -->
+<div class="lg:col-span-3 flex flex-col md:flex-row lg:flex-col justify-between gap-6">
+<div>
+<h4 class="font-medium text-moka-dark mb-6 font-sans">Години роботи</h4>
+<p class="text-moka-text-light font-sans">Щодня<br/>08:00 – 22:00</p>
+</div>
+<!-- Interior Image Placeholder -->
+<div class="w-full max-w-[200px] h-[120px] rounded-xl overflow-hidden shadow-sm mt-auto">
+<img alt="Cafe Interior" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWcN07iSkksMmRN_7HPL_EQF4m4LNc84hqcFzorTss2YI2unxEPF8X4JOBPuqEk37cKSNdyZ0-WLsd3Vq2EsBim7TfPw-Wp2-N2Yi9C94E_HX9ob8x_IJy4ywEAXStipqeKapes7Rp0T7bul4kVY_nzcrbBJMbHa1AIWZ-tzLWU4GCDnuOX8afcbzNRkkjfAe0ApOkPusWGqCJkvt1JE3lBD6-3IHtcUdETl53Ti1OLASH43Y-8kj7"/>
+</div>
+</div>
+</div>
+<!-- Bottom Bar -->
+<div class="pt-8 border-t border-gray-300/50 flex flex-col md:flex-row justify-between items-center text-sm text-moka-text-light font-sans">
+<p class="mb-4 md:mb-0">© 2024 MOKA. Усі права захищені.</p>
+<a class="hover:text-moka-dark transition-colors" href="#">Політика конфіденційності</a>
+</div>
+</div>
+</footer>
+<!-- END: Footer Section -->
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden bg-surface-light/90 backdrop-blur-2xl border-t border-card-border fixed bottom-0 left-0 w-full flex justify-around items-center pt-2 pb-6 px-4 z-50">
+<a class="flex flex-col items-center justify-center text-accent-brown font-bold" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">restaurant_menu</span>
+<span class="font-label-sm text-label-sm">Menu</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-muted/60 hover:text-accent-brown transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">coffee_maker</span>
+<span class="font-label-sm text-label-sm">Brew</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-muted/60 hover:text-accent-brown transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">event_seat</span>
+<span class="font-label-sm text-label-sm">Reserve</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-muted/60 hover:text-accent-brown transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">account_circle</span>
+<span class="font-label-sm text-label-sm">MOKA</span>
+</a>
+</nav>
+</body></html>
