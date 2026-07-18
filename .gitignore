@@ -5,3 +5,5 @@ out/
 !.env.example
 npm-debug.log*
 *.tsbuildinfo
+.playwright-cli/
+output/playwright/

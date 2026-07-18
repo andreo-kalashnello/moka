@@ -14,6 +14,11 @@ export function Reveal({ children, className = "" }: RevealProps) {
     const element = ref.current;
     if (!element) return;
 
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      element.dataset.visible = "true";
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -25,7 +30,15 @@ export function Reveal({ children, className = "" }: RevealProps) {
     );
 
     observer.observe(element);
-    return () => observer.disconnect();
+    const fallback = window.setTimeout(() => {
+      element.dataset.visible = "true";
+      observer.unobserve(element);
+    }, 1500);
+
+    return () => {
+      window.clearTimeout(fallback);
+      observer.disconnect();
+    };
   }, []);
 
   return (

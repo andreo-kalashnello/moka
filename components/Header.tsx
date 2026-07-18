@@ -1,7 +1,7 @@
 "use client";
 
 import { Menu, UserRound, X } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 const navItems = [
   { label: "Головна", href: "#home" },
@@ -13,7 +13,14 @@ const navItems = [
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const menuPanelRef = useRef<HTMLElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  const closeMenu = useCallback(() => {
+    setIsOpen(false);
+    window.requestAnimationFrame(() => menuButtonRef.current?.focus());
+  }, []);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -23,7 +30,28 @@ export function Header() {
     closeButtonRef.current?.focus();
 
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setIsOpen(false);
+      if (event.key === "Escape") {
+        closeMenu();
+        return;
+      }
+
+      if (event.key !== "Tab") return;
+
+      const focusableElements = menuPanelRef.current?.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled])',
+      );
+      if (!focusableElements?.length) return;
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
+      }
     };
 
     window.addEventListener("keydown", handleKeyDown);
@@ -31,12 +59,13 @@ export function Header() {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [isOpen]);
+  }, [closeMenu, isOpen]);
 
   return (
     <>
       <header className="mobile-header">
         <button
+          ref={menuButtonRef}
           type="button"
           className="icon-button"
           aria-label="Відкрити меню"
@@ -78,8 +107,9 @@ export function Header() {
       </header>
 
       {isOpen && (
-        <div className="mobile-menu-backdrop" role="presentation" onMouseDown={() => setIsOpen(false)}>
+        <div className="mobile-menu-backdrop" role="presentation" onMouseDown={closeMenu}>
           <nav
+            ref={menuPanelRef}
             id="mobile-menu"
             className="mobile-menu-panel"
             aria-label="Мобільна навігація"
@@ -92,14 +122,14 @@ export function Header() {
                 type="button"
                 className="icon-button"
                 aria-label="Закрити меню"
-                onClick={() => setIsOpen(false)}
+                onClick={closeMenu}
               >
                 <X aria-hidden="true" size={24} />
               </button>
             </div>
             <div className="mobile-menu-links">
               {navItems.map((item) => (
-                <a href={item.href} key={item.href} onClick={() => setIsOpen(false)}>
+                <a href={item.href} key={item.href} onClick={closeMenu}>
                   {item.label}
                 </a>
               ))}

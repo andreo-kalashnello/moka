@@ -73,7 +73,7 @@ export function Footer() {
           </div>
         </div>
         <div className="footer__bottom">
-          <p>© 2026 MOKA. Усі права захищені.</p>
+          <p>© 2024 MOKA. Усі права захищені.</p>
           <a href="#">Політика конфіденційності</a>
         </div>
       </div>
