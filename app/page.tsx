@@ -5,14 +5,15 @@ import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { InfoStrip } from "@/components/InfoStrip";
 import { MenuSection } from "@/components/MenuSection";
-import { MobileNavigation } from "@/components/MobileNavigation";
 import { Reveal } from "@/components/Reveal";
+import { RequestModalProvider } from "@/components/RequestModalProvider";
 import { ReviewsSection } from "@/components/ReviewsSection";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import { ServicesSection } from "@/components/ServicesSection";
 
 export default function HomePage() {
   return (
-    <>
+    <RequestModalProvider>
       <Header />
       <main>
         <Hero />
@@ -28,7 +29,7 @@ export default function HomePage() {
         <BookingCTA />
       </main>
       <Footer />
-      <MobileNavigation />
-    </>
+      <ScrollToTop />
+    </RequestModalProvider>
   );
 }

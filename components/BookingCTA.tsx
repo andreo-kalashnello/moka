@@ -1,8 +1,13 @@
+"use client";
+
 import Image from "next/image";
 import { CalendarDays } from "lucide-react";
 import { Reveal } from "./Reveal";
+import { useRequestModal } from "./RequestModalProvider";
 
 export function BookingCTA() {
+  const { openBooking } = useRequestModal();
+
   return (
     <Reveal>
       <section className="booking-cta" id="booking" aria-labelledby="booking-title">
@@ -20,9 +25,9 @@ export function BookingCTA() {
           </span>
           <h2 id="booking-title">Ваш улюблений столик вже чекає</h2>
           <p>Забронюйте столик онлайн за кілька кліків та насолоджуйтеся моментом у MOKA.</p>
-          <a className="button button--pill" href="tel:+380971234567">
+          <button className="button button--pill" type="button" onClick={openBooking}>
             Забронювати столик
-          </a>
+          </button>
         </div>
       </section>
     </Reveal>

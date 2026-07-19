@@ -1,3 +1,5 @@
+"use client";
+
 import { services } from "@/lib/data";
 import { Reveal } from "./Reveal";
 import { ServiceCard } from "./ServiceCard";

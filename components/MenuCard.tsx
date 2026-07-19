@@ -7,9 +7,14 @@ interface MenuCardProps {
 
 export function MenuCard({ item }: MenuCardProps) {
   return (
-    <article className="menu-card">
+    <article className="menu-card menu-card--enter">
       <div className="menu-card__image">
-        <Image src={item.image} alt={item.alt} fill sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 20vw" />
+        <Image
+          src={item.image}
+          alt={item.alt}
+          fill
+          sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 50vw, (max-width: 1280px) 33vw, 20vw"
+        />
       </div>
       <div className="menu-card__body">
         <div>

@@ -1,21 +1,27 @@
 "use client";
 
 import { Menu, UserRound, X } from "lucide-react";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { type CSSProperties, useCallback, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
+import { useRequestModal } from "./RequestModalProvider";
 
 const navItems = [
-  { label: "Головна", href: "#home" },
-  { label: "Меню", href: "#menu" },
-  { label: "Про нас", href: "#about" },
-  { label: "Послуги", href: "#services" },
-  { label: "Бронювання", href: "#booking" },
+  { label: "Головна", href: "#home", id: "home" },
+  { label: "Меню", href: "#menu", id: "menu" },
+  { label: "Про нас", href: "#about", id: "about" },
+  { label: "Послуги", href: "#services", id: "services" },
+  { label: "Бронювання", href: "#booking", id: "booking" },
 ] as const;
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
+  const [scrollProgress, setScrollProgress] = useState(0);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
-  const menuPanelRef = useRef<HTMLElement>(null);
+  const menuPanelRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const { openBooking } = useRequestModal();
 
   const closeMenu = useCallback(() => {
     setIsOpen(false);
@@ -23,10 +29,60 @@ export function Header() {
   }, []);
 
   useEffect(() => {
+    let frame = 0;
+
+    const updateHeader = () => {
+      frame = 0;
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      setIsScrolled(window.scrollY > 24);
+      setScrollProgress(maxScroll > 0 ? Math.min(100, (window.scrollY / maxScroll) * 100) : 0);
+    };
+
+    const handleScroll = () => {
+      if (!frame) frame = window.requestAnimationFrame(updateHeader);
+    };
+
+    updateHeader();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
+  }, []);
+
+  useEffect(() => {
+    const sections = navItems
+      .map(({ id }) => document.getElementById(id))
+      .filter((section): section is HTMLElement => Boolean(section));
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleEntry = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visibleEntry) setActiveSection(visibleEntry.target.id);
+      },
+      { rootMargin: "-18% 0px -62%", threshold: [0.05, 0.2, 0.5] },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
     if (!isOpen) return;
 
     const previousOverflow = document.body.style.overflow;
+    const appShell = document.querySelector<HTMLElement>(".app-shell");
+    const previousInert = appShell?.inert ?? false;
+    const previousAriaHidden = appShell?.getAttribute("aria-hidden") ?? null;
+
     document.body.style.overflow = "hidden";
+    if (appShell) {
+      appShell.inert = true;
+      appShell.setAttribute("aria-hidden", "true");
+    }
     closeButtonRef.current?.focus();
 
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -57,13 +113,42 @@ export function Header() {
     window.addEventListener("keydown", handleKeyDown);
     return () => {
       document.body.style.overflow = previousOverflow;
+      if (appShell) {
+        appShell.inert = previousInert;
+        if (previousAriaHidden === null) appShell.removeAttribute("aria-hidden");
+        else appShell.setAttribute("aria-hidden", previousAriaHidden);
+      }
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [closeMenu, isOpen]);
 
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const desktopViewport = window.matchMedia("(min-width: 1024px)");
+    const handleViewportChange = (event: MediaQueryListEvent | MediaQueryList) => {
+      if (!event.matches) return;
+
+      setIsOpen(false);
+      window.requestAnimationFrame(() => {
+        document.querySelector<HTMLAnchorElement>(".desktop-logo")?.focus({ preventScroll: true });
+      });
+    };
+
+    desktopViewport.addEventListener("change", handleViewportChange);
+    if (desktopViewport.matches) handleViewportChange(desktopViewport);
+
+    return () => desktopViewport.removeEventListener("change", handleViewportChange);
+  }, [isOpen]);
+
+  const headerStyle = {
+    "--scroll-progress": `${scrollProgress}%`,
+  } as CSSProperties;
+  const headerClassName = `header-animated${isScrolled ? " is-scrolled" : ""}`;
+
   return (
     <>
-      <header className="mobile-header">
+      <header className={`mobile-header ${headerClassName}`} style={headerStyle}>
         <button
           ref={menuButtonRef}
           type="button"
@@ -78,19 +163,24 @@ export function Header() {
         <a className="mobile-logo" href="#home" aria-label="MOKA — на головну">
           MOKA
         </a>
-        <a className="profile-button" href="#booking" aria-label="Перейти до бронювання">
+        <button className="profile-button" type="button" aria-label="Відкрити бронювання" onClick={openBooking}>
           <UserRound aria-hidden="true" size={22} />
-        </a>
+        </button>
       </header>
 
-      <header className="desktop-header">
+      <header className={`desktop-header ${headerClassName}`} style={headerStyle}>
         <div className="site-container desktop-header__inner">
           <a className="desktop-logo" href="#home" aria-label="MOKA — на головну">
             MOKA
           </a>
           <nav className="desktop-nav" aria-label="Головна навігація">
-            {navItems.map((item, index) => (
-              <a className={index === 0 ? "is-active" : undefined} href={item.href} key={item.href}>
+            {navItems.map((item) => (
+              <a
+                className={activeSection === item.id ? "is-active" : undefined}
+                href={item.href}
+                aria-current={activeSection === item.id ? "location" : undefined}
+                key={item.href}
+              >
                 {item.label}
               </a>
             ))}
@@ -99,20 +189,23 @@ export function Header() {
             <a className="header-phone" href="tel:+380671234567">
               Контакти +38 (067) 123 45 67
             </a>
-            <a className="button button--compact" href="#booking">
+            <button className="button button--compact" type="button" onClick={openBooking}>
               Забронювати
-            </a>
+            </button>
           </div>
         </div>
       </header>
 
-      {isOpen && (
+      {isOpen &&
+        createPortal(
         <div className="mobile-menu-backdrop" role="presentation" onMouseDown={closeMenu}>
-          <nav
+          <div
             ref={menuPanelRef}
             id="mobile-menu"
             className="mobile-menu-panel"
-            aria-label="Мобільна навігація"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Мобільне меню"
             onMouseDown={(event) => event.stopPropagation()}
           >
             <div className="mobile-menu-panel__top">
@@ -127,20 +220,27 @@ export function Header() {
                 <X aria-hidden="true" size={24} />
               </button>
             </div>
-            <div className="mobile-menu-links">
+            <nav className="mobile-menu-links" aria-label="Мобільна навігація">
               {navItems.map((item) => (
-                <a href={item.href} key={item.href} onClick={closeMenu}>
+                <a
+                  className={activeSection === item.id ? "is-active" : undefined}
+                  href={item.href}
+                  aria-current={activeSection === item.id ? "location" : undefined}
+                  key={item.href}
+                  onClick={closeMenu}
+                >
                   {item.label}
                 </a>
               ))}
-            </div>
+            </nav>
             <div className="mobile-menu-contacts">
               <a href="tel:+380671234567">+38 (067) 123 45 67</a>
               <a href="mailto:hello@moka.cafe">hello@moka.cafe</a>
             </div>
-          </nav>
-        </div>
-      )}
+          </div>
+        </div>,
+          document.body,
+        )}
     </>
   );
 }

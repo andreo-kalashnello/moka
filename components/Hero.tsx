@@ -2,9 +2,11 @@
 
 import Image from "next/image";
 import { useEffect, useRef } from "react";
+import { useRequestModal } from "./RequestModalProvider";
 
 export function Hero() {
   const imageRef = useRef<HTMLDivElement>(null);
+  const { openBooking } = useRequestModal();
 
   useEffect(() => {
     const image = imageRef.current;
@@ -56,9 +58,9 @@ export function Hero() {
             <a className="button" href="#menu">
               Переглянути меню
             </a>
-            <a className="button button--outline" href="#booking">
+            <button className="button button--outline" type="button" onClick={openBooking}>
               Забронювати столик
-            </a>
+            </button>
           </div>
         </div>
       </div>
