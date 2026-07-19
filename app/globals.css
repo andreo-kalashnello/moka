@@ -680,6 +680,7 @@ button {
 }
 
 .menu-card strong {
+  margin-top: auto;
   font-family: var(--font-playfair), Georgia, serif;
   font-size: 20px;
 }
@@ -1892,6 +1893,10 @@ button {
 
   .menu-grid {
     grid-template-columns: 1fr;
+  }
+
+  .menu-card strong {
+    margin-top: 0;
   }
 
   .menu-card__image {
