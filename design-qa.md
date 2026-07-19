@@ -28,6 +28,8 @@
 - All responsive images load successfully in a clean session.
 - Final source/implementation full-page and focused comparisons were inspected together.
 - Navigation, booking anchors, keyboard behavior, hover/focus states, and mobile menu pass Playwright testing.
+- Targeted follow-up on 430×932 confirms the tightened hero spacing, aligned InfoStrip dividers, compact menu count, and a modal centered with a measured `centerDelta` of `0`.
+- Targeted desktop carousel follow-up confirms that one next action changes the visible window from reviews 1–3 to reviews 2–4.
 - Detailed evidence is recorded in `VISUAL-QA.md` and `TEST-REPORT.md`.
 
 final result: passed

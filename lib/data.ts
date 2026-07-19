@@ -196,4 +196,16 @@ export const reviews: readonly ReviewItem[] = [
     text: "Проводили тут день народження — усе було чудово! Смачно, красиво і дуже затишно.",
     avatar: "/images/reviews/mariia.png",
   },
+  {
+    id: "sofiia",
+    name: "Софія М.",
+    text: "Заходжу сюди після ранкової прогулянки. Бариста вже знають мою улюблену каву, а круасани завжди свіжі.",
+    avatar: "/images/reviews/anna.png",
+  },
+  {
+    id: "dmytro",
+    name: "Дмитро Л.",
+    text: "Дуже тепле місце для зустрічей із друзями. Швидкий сервіс, чудова кухня і справді уважна команда.",
+    avatar: "/images/reviews/oleksii.png",
+  },
 ];

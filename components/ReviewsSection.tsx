@@ -1,23 +1,96 @@
 "use client";
 
 import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
-import { type FocusEvent, type KeyboardEvent, useCallback, useEffect, useState } from "react";
+import {
+  type FocusEvent,
+  type KeyboardEvent,
+  type TransitionEvent,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { reviews } from "@/lib/data";
 import { ReviewCard } from "./ReviewCard";
 
+const LOOP_START_INDEX = reviews.length;
+const TRANSITION_FALLBACK_MS = 720;
+
+function normalizeReviewIndex(index: number) {
+  return ((index % reviews.length) + reviews.length) % reviews.length;
+}
+
+function getVisibleCount() {
+  if (window.innerWidth <= 767) return 1;
+  if (window.innerWidth <= 1023) return 2;
+  return 3;
+}
+
 export function ReviewsSection() {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [trackIndex, setTrackIndex] = useState(LOOP_START_INDEX);
+  const [visibleCount, setVisibleCount] = useState(3);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [isTransitionEnabled, setIsTransitionEnabled] = useState(true);
   const [isInteracting, setIsInteracting] = useState(false);
   const [isAutoPaused, setIsAutoPaused] = useState(false);
   const isPaused = isInteracting || isAutoPaused;
+  const activeIndex = normalizeReviewIndex(trackIndex - LOOP_START_INDEX);
+  const loopedReviews = useMemo(() => [...reviews, ...reviews, ...reviews], []);
 
-  const showPrevious = useCallback(() => {
-    setActiveIndex((index) => (index - 1 + reviews.length) % reviews.length);
+  const normalizeTrack = useCallback(() => {
+    setTrackIndex((index) => {
+      if (index >= LOOP_START_INDEX && index < LOOP_START_INDEX * 2) return index;
+
+      setIsTransitionEnabled(false);
+      return LOOP_START_INDEX + normalizeReviewIndex(index - LOOP_START_INDEX);
+    });
+    setIsAnimating(false);
   }, []);
 
-  const showNext = useCallback(() => {
-    setActiveIndex((index) => (index + 1) % reviews.length);
+  const slideBy = useCallback(
+    (distance: number) => {
+      if (isAnimating || distance === 0) return;
+
+      setIsTransitionEnabled(true);
+      setIsAnimating(true);
+      setTrackIndex((index) => index + distance);
+    },
+    [isAnimating],
+  );
+
+  const showPrevious = useCallback(() => slideBy(-1), [slideBy]);
+  const showNext = useCallback(() => slideBy(1), [slideBy]);
+
+  useEffect(() => {
+    const updateVisibleCount = () => {
+      const nextVisibleCount = getVisibleCount();
+      setVisibleCount((currentVisibleCount) => {
+        if (currentVisibleCount === nextVisibleCount) return currentVisibleCount;
+        setIsTransitionEnabled(false);
+        return nextVisibleCount;
+      });
+    };
+
+    updateVisibleCount();
+    window.addEventListener("resize", updateVisibleCount);
+    return () => window.removeEventListener("resize", updateVisibleCount);
   }, []);
+
+  useEffect(() => {
+    if (isTransitionEnabled) return;
+
+    const firstFrame = window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => setIsTransitionEnabled(true));
+    });
+    return () => window.cancelAnimationFrame(firstFrame);
+  }, [isTransitionEnabled]);
+
+  useEffect(() => {
+    if (!isAnimating) return;
+
+    const timeout = window.setTimeout(normalizeTrack, TRANSITION_FALLBACK_MS);
+    return () => window.clearTimeout(timeout);
+  }, [isAnimating, normalizeTrack]);
 
   useEffect(() => {
     if (isPaused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -37,6 +110,18 @@ export function ReviewsSection() {
 
   const handleBlur = (event: FocusEvent<HTMLElement>) => {
     if (!event.currentTarget.contains(event.relatedTarget)) setIsInteracting(false);
+  };
+
+  const handleTransitionEnd = (event: TransitionEvent<HTMLDivElement>) => {
+    if (event.target === event.currentTarget) normalizeTrack();
+  };
+
+  const showReview = (index: number) => {
+    if (index === activeIndex || isAnimating) return;
+
+    const forwardDistance = (index - activeIndex + reviews.length) % reviews.length;
+    const backwardDistance = (activeIndex - index + reviews.length) % reviews.length;
+    slideBy(forwardDistance <= backwardDistance ? forwardDistance : -backwardDistance);
   };
 
   return (
@@ -60,19 +145,32 @@ export function ReviewsSection() {
           <ChevronLeft aria-hidden="true" size={24} />
         </button>
         <div className="reviews-viewport" aria-live={isPaused ? "polite" : "off"}>
-          <div className="reviews-track" style={{ transform: `translate3d(-${activeIndex * 100}%, 0, 0)` }}>
-            {reviews.map((review, index) => (
-              <div
-                className="review-slide"
-                role="group"
-                aria-roledescription="slide"
-                aria-label={`${index + 1} з ${reviews.length}`}
-                aria-hidden={activeIndex !== index}
-                key={review.id}
-              >
-                <ReviewCard review={review} />
-              </div>
-            ))}
+          <div
+            className="reviews-track"
+            style={{
+              transform: `translate3d(-${(trackIndex * 100) / visibleCount}%, 0, 0)`,
+              transition: isTransitionEnabled ? undefined : "none",
+            }}
+            onTransitionEnd={handleTransitionEnd}
+          >
+            {loopedReviews.map((review, index) => {
+              const reviewIndex = index % reviews.length;
+              const isVisible = index >= trackIndex && index < trackIndex + visibleCount;
+
+              return (
+                <div
+                  className="review-slide"
+                  role="group"
+                  aria-roledescription="slide"
+                  aria-label={`${reviewIndex + 1} з ${reviews.length}`}
+                  aria-hidden={!isVisible}
+                  style={{ flexBasis: `${100 / visibleCount}%` }}
+                  key={`${Math.floor(index / reviews.length)}-${review.id}`}
+                >
+                  <ReviewCard review={review} />
+                </div>
+              );
+            })}
           </div>
         </div>
         <button className="carousel-arrow carousel-arrow--next" type="button" aria-label="Наступний відгук" onClick={showNext}>
@@ -94,7 +192,7 @@ export function ReviewsSection() {
               aria-current={activeIndex === index ? "true" : undefined}
               className={activeIndex === index ? "is-active" : undefined}
               key={review.id}
-              onClick={() => setActiveIndex(index)}
+              onClick={() => showReview(index)}
             />
           ))}
         </div>
